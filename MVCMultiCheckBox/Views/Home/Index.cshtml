@@ -1,0 +1,23 @@
+﻿@model MVCMultiCheckBox.Models.HomeViewModel
+
+@{
+    ViewBag.Title = "Personnel";
+}
+
+<h2>Personnel</h2>
+
+<br />
+
+@using (Html.BeginForm("Submit", "Home"))
+{
+    for (int i = 0; i < Model.Persons.Count; i++)
+    {
+        <div>
+            @Html.CheckBoxFor(m => m.Persons[i].Checked, new { id = "cbPerson_" + i })
+            @Html.DisplayFor(m => m.Persons[i].Name)
+        </div><br />
+        @Html.HiddenFor(m => m.Persons[i].Name);
+
+    }
+    <div><input type="submit" value="Submit" name="Submit" class="btn btn-default" /></div>
+}
